@@ -1,6 +1,6 @@
 ---
 title: Accounting
-description: accounting help
+description: accounting reconciliation
 weight: 40
 ---
 

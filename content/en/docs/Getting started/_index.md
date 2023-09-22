@@ -13,7 +13,7 @@ To run EZClassifier you need any computer with Java Runtime Environment installe
 
 Than you need to [download the ezc.jar file](/download/ezc.jar)
 
-Last, you need an API Key that enables the services [see prices](/docs/prices). POC plans are [available on requests](/about).
+Last, you need an API Key that enables the services ([see prices here](/docs/prices)). POC and free plans are [available on requests](/about).
 
 
 ## Try it out!
@@ -21,11 +21,11 @@ Last, you need an API Key that enables the services [see prices](/docs/prices). 
 {{% alert title="sampe data" color="info" %}}
 Here are some sample data:
 - [examples file](/usecase/sample/examples.csv)
-- [data do be classified](/usecase/sample/data.csv).
-- [resultfile](/usecase/sample/out.csv)
+- [data to be classified](/usecase/sample/data.csv).
+- [result file](/usecase/sample/out.csv)
 {{% /alert %}}
 
-Create a new model:
+Create a new model from your examples:
 ```
 java -jar "path-to/ezc.jar" model -k "your-api-key-here" -i examples.csv 
 ```
