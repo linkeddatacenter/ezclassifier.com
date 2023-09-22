@@ -16,18 +16,18 @@ title: EZClassifier
 
 
 {{% blocks/section color="dark" type="row" %}}
-{{% blocks/feature icon="fa-terminal" title="Supe easy to use" url="/docs/getting-started"  %}}
-Just a simple command. 
+{{% blocks/feature icon="fa-terminal" title="Super easy-to-use" url="/docs/getting-started"  %}}
+Do it with just a simple command
 {{% /blocks/feature %}}
 
 
 {{% blocks/feature title="Save hours of boring manual work" url="/docs/getting-started" %}}
-hundred of thousand data classified in minutes
+Hundreds of thousands of data classified in minutes
 {{% /blocks/feature %}}
 
 
 {{% blocks/feature icon="fab fa-at" title="Contact us" url="/about" %}}
-For announcement of latest features etc.
+For POC, special offers, custom needs, etc.
 {{% /blocks/feature %}}
 
 

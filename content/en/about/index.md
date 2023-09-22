@@ -13,7 +13,7 @@ menu: {main: {weight: 90}}
 
 EZClassifier is a general-purpose is a service provided by [LinkedData.Center](https://linkeddata.center)
 
-For pricing, POC and more info please contact us at enrico@linkeddata.center or send a message (telegram or whatsapp) to +393356382949
+For a special quote, POC and more info, please contact us at enrico@linkeddata.center or send a message (telegram or whatsapp) to +393356382949
 
 {{% /blocks/lead %}}
 
