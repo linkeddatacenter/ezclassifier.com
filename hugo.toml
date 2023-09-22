@@ -65,7 +65,7 @@ languageName ="English"
 weight = 1
 [languages.en.params]
 title = "EZClassifier"
-description = "An easy tou use general purpose classifier"
+description = "An easy-to-use general-purpose classifier"
 
 #[languages.it]
 #languageName ="Italiano"

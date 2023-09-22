@@ -43,11 +43,16 @@ This command will generate the results in the file out.csv
 
 
 ## How it works?
-You'll require a CSV file containing a list of examples. In this file, each example corresponds to a row and comprises two fields: 'prototype' and 'class'. Optionally, you can include a 'weight' field, which ranges from 0 to 1 (default value is 0.5). 
 
-The "prototype" is a string (quote it if needed) that exemplifies a typical element in the category specified in the second field ("class"). 
+Suppose you need to categorize a set of texts that contain mixed references to cats, actors, dogs, and other things you don't want to categorize.
 
-You can add as many examples an categories you want. You can optionally add to  each field coupe a third field that suggests to the algorithm your confidence in the provided example classification. For example:
+You will need a CSV file containing a list of examples. In this file, each example corresponds to a row and includes two fields: 'prototype' and 'class.'
+
+The "prototype" is a text that exemplifies a typical element in the category specified in the second field (i.e., the "class").
+
+You can add as many examples and categories as you like, as long as there is at least one example for each category. EZClassifier works with any language, even when used simultaneously in the same text or the same data file and/or examples.
+
+Here are some examples yo can provide:
 
 | prototype                                                                                                                                             | class |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
