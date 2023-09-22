@@ -1,4 +1,4 @@
-# ezlassifier web site
+# EZClassifier web site
 
 thi repository contains the public web site for ezclassifier offering
 It is based on [Docsy][https://www.docsy.dev/] with the [Docsy example](https://github.com/google/docsy-example) as template.
