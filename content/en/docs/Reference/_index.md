@@ -40,7 +40,7 @@ java --jar ezc.jar model [options ]
 **Options for model command:**
 
 `-i, --input`
-: The examples input stream, by default "-" that means std in (e.g. -i - ). The stream is supposed to be in CSV format and MUST contain two fields ("prototype" and "class") plus an optional field "weight" ranging from 0 to 1 (0.5 by default). The first line MUST be a header (ignored). Only the first 1000 rows are considered
+: The examples input stream, by default "-" that means std in (e.g. -i - ). The stream is supposed to be in CSV format and MUST contain two fields ("prototype" and "class") plus an optional field "weight" ranging from 0 to 1 (1 by default). The first line MUST be a header (ignored). Only the first 1000 rows are considered
 
 `-o, --outputfile`
 : The model generated, by default model.tc in the current directory
