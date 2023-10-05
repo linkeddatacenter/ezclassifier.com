@@ -7,52 +7,16 @@ weight: 2
 Data classification is the process of organizing and categorizing data based on specific criteria or attributes. 
 It helps make data more structured, accessible, and understandable. 
 
+## Let's see an example
+Suppose you need to categorize a set of texts that contain mixed references to cats, actors, dogs, and other things you don't matter.
 
-## HW & SW Prerequisites
-To run EZClassifier you need any computer with Java Runtime Environment installed (JRE). You can download for free the JRE from the [official Java site](https://www.java.com/download/)
-
-Than you need to [download the ezc.jar file](/download/ezc.jar)
-
-Last, you need an API Key that enables the services ([see prices here](/docs/prices)). POC and free plans are [available on requests](/about).
-
-
-## Try it out!
-
-{{% alert title="sampe data" color="info" %}}
-Here are some sample data:
-- [examples file](/usecase/sample/examples.csv)
-- [data to be classified](/usecase/sample/data.csv).
-- [result file](/usecase/sample/out.csv)
-{{% /alert %}}
-
-Create a new model from your examples:
-```
-java -jar "path-to/ezc.jar" model -k "your-api-key-here" -i examples.csv 
-```
-
-This command will generate the file model.tc containing the learned model
-
-Classify your data using the created model:
-```
-java -jar "path-to-/ezc.jar" classify -k "your-api-key-here" -H -i data.csv
-```
-
-This command will generate the results in the file out.csv
-
-
-
-
-## How it works?
-
-Suppose you need to categorize a set of texts that contain mixed references to cats, actors, dogs, and other things you don't want to categorize.
-
-You will need a CSV file containing a list of examples. In this file, each example corresponds to a row and includes two fields: 'prototype' and 'class.'
-
-The "prototype" is a text that exemplifies a typical element in the category specified in the second field (i.e., the "class").
+You will need a CSV file containing a list of few examples. In this file, each example corresponds to a row that provides two fields: 
+- **prototype**: a text that exemplifies a typical element in the category specified in the second field
+- **class**: a short text that represent a category name
 
 You can add as many examples and categories as you like, as long as there is at least one example for each category. EZClassifier works with any language, even when used simultaneously in the same text or the same data file and/or examples.
 
-Here are some examples yo can provide:
+Here are some examples you can provide:
 
 | prototype                                                                                                                                             | class |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
@@ -68,8 +32,6 @@ Here are some examples yo can provide:
 | Leonardo DiCaprio: Leonardo DiCaprio is a highly respected actor who has starred in a wide range of critically acclaimed films                        | actor |
 | Viola Davis: Viola Davis is a talented actress known for her powerful performances                                                                    | actor |
 
-
-EZClassifier accepts till 1000 examples.
 
 
 Than you can provide a set of data to classify according the provided example. For instance:
@@ -100,8 +62,12 @@ Than you can provide a set of data to classify according the provided example. F
 | Hoe: A hoe has a flat, blade-like head and a long handle, used for weeding, cultivating, and breaking up soil.                          |
 | Pruning Shears: Prunin                                                                                                                  | 
 
-On success EZClassifier will create a table with two additional fields:
 
+On success EZClassifier will create a table with two additional fields:
+- **class**: that is the predicted category for the described row
+- **similarity**: a number from 0 to 1 that represents the confidence of EZClassifier about its classification (1=maxumum confidence , 0=no confidence)
+
+For example:
 
 | data | class | similarity |
 | --- | --- | --- |
@@ -129,4 +95,61 @@ On success EZClassifier will create a table with two additional fields:
 | Hoe: A hoe has a flat, blade-like head and a long handle, used for weeding, cultivating, and breaking up soil. | OTHER | 0.760036 |
 | Pruning Shears: Prunin | OTHER | 0.781802 |
 
-Elements with a confidence less than 0.8 (configurable) will be assigned to the "OTHER" category
+Nothe that elements with a confidence less than 0.84 (configurable) will be assigned to the "OTHER" category
+
+
+## Try it out!
+
+### HW & SW Prerequisites
+To run EZClassifier, you need any computer with Java 17+ installed. You can download the Java 17+ for  your architecture (Linux, macOS, Windows) from the [the official Java site](https://www.oracle.com/java/technologies/downloads/#java17).
+
+### Install EZClassifier
+Next, [download the latest version of the EZC JAR file](/download/ezc.jar) to  a directory of your choice.
+
+Lastly, you'll need an API Key to enable the services ([see prices here](/docs/prices)). Proof of Concept (POC) and free plans are [available upon request](/about).
+
+Create shortcut for launching the java command and set the TC_API_KEY environment with your api key:
+
+For example, with bash, open a terminal and type:
+```
+export TC_API_KEY=HERE-IS-YOUR-API-KEY
+alias ezc='java -jar ezc.jar' 
+```
+
+For example, in windows open a terminal windows (CMD) and type:
+```
+set TC_API_KEY=HERE-IS-YOUR-API-KEY
+doskey ezc=java -jar "%USERPROFILE%\Downloads\ezc.jar" $*
+```
+
+Test that the system is working:
+```
+java --version
+ezc --version
+```
+
+
+### Run the example in two simple steps
+
+{{% alert title="sampe data" color="info" %}}
+Here you can download some sample data:
+- [examples file](/tutorial1-data/examples.csv): some examples about cat, dog, and actor descriptions
+- [data to be classified](/tutorial1-data/input-data.csv): some strings to classify
+{{% /alert %}}
+
+#### Step 1: create a model
+Create a new model from your examples:
+
+```
+ezc model -n mymodel -H -i examples.csv -t 0.84
+```
+
+To list all the available models you can use `ezc model ls`
+
+#### Step 2: classify your data using the created model:
+
+```
+ezc classify -n mymodel -H -i data.csv -o result.csv
+```
+
+The result.csv file will contain your classified data

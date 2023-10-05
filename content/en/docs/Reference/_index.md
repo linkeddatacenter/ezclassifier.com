@@ -13,7 +13,7 @@ For java JRE 17+ is required
 
 The command returns 0 on success  or a value > 0 on failure. The logs are written on stdout by default and can be redirected.
 
-All commands requires a valid API_KEY
+All commands requires a valid api key in the environment variable `API_KEY`
 
 ```
 export TC_API_KEY=<api-key>
@@ -23,7 +23,7 @@ export TC_API_KEY=<api-key>
 **Usage:**
 
 ```bash
-java -jar ezc.jar [-hV] [COMMAND]
+java -jar <path of the downloaded jar file> [-hV] [COMMAND]
 ```
 
 A software agent that classifies text based on the provided prototypes
@@ -45,7 +45,6 @@ A software agent that classifies text based on the provided prototypes
   Perform classification
 
 
-
 ### Command `model train`
 
 Train the model
@@ -56,10 +55,12 @@ model train [-hHSV] -C=<labelIndex> [-e=<apiEndpoint>]
                     [-W=<weightIndex>]
 ```
 
+You can enhance an already trained model  by adding new examples through multiple calls to the "model train" command.
+
 **Options:**
 
 - `-C, --class-index=<labelIndex>`  
-  The column index in the CSV file that contains the field with the class attached to the text (from 0)
+  The column index in the CSV file that contains the field with the class attached to the text (from 0). By default is 1
 
 - `-e, --endpoint=<apiEndpoint>`
   Api endpoint.  By default `https://api.mopso.io/v1/tc`
