@@ -120,6 +120,8 @@ model ls [-hV] [-e=<apiEndpoint>] [-k=<apiKey>]
 model rm [-hV] [-e=<apiEndpoint>] [-k=<apiKey>] -n=<name>
 ```
 
+Models that are not used for more than 3 month are automatically deleted.
+
 **Options:**
 
 - `-e, --endpoint=<apiEndpoint>`
@@ -174,7 +176,7 @@ Perform classification
   Runs the program in strict mode: any partially recoverable exception thrown during the execution (i.e. a classification that fails or a row that can't be parsed) will stop the program, truncating the output to the last stable state. If not run in strict mode, the application will try to compensate for as many errors as it's possible.
 
 - **`-t, --threshold=<threshold>`**  
-  Number between 0 (not included) and 1 (included) that is used to determine whether a match ‘SIMILARITY_SCORE’ is too low to be considered valid. In this case, the ‘CLASS’ is set to ‘OTHER’. Default value is 0.2.
+  Number between 0 (not included) and 1 (included) that is used to determine whether a match ‘SIMILARITY_SCORE’ is too low to be considered valid. In this case, the ‘CLASS’ is set to ‘OTHER’. Default value is 0.84.
 
 - **`-T, --threads=<threads>`**  
   The number of parallel jobs to be used by the classification services, by default is 1. If more than 1 is used, the output order is not preserved. The value is capped to the number of CPU cores.

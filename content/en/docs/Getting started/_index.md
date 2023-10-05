@@ -16,8 +16,8 @@ You will need a CSV file containing a few examples. In this file, each example c
 
 These examples are used by EZClassifier to create a personalized model. You can add to the model as many prototypes and categories as you like, as long as there is at least one example for each category. EZClassifier works with any language, even when used simultaneously in the same text or the same data file and/or examples.
 
-Once you created your model, you use it to classify your data. 
-EZClassifier will create a table adding two additional fields to your data:
+Once you created your model, you use it to classify your data stream. 
+EZClassifier will add two additional fields to your data:
 - **class**: that is the predicted category for the described row
 - **similarity**: a number from 0 to 1 that represents the confidence of EZClassifier about its classification (1=maxumum confidence , 0=no confidence).
   
@@ -77,7 +77,7 @@ Here are the data you want to classify:
 {{% /tab %}}
 {{% tab header="classified data"  %}}
 
-Here are some results. Note that elements with a confidence less than 0.84 (configurable) are assigned to the "OTHER" category:
+Here are some results:
 
 | data | class | similarity |
 | --- | --- | --- |
@@ -152,7 +152,7 @@ Here you can download some sample data:
 Create a new model from your examples:
 
 ```
-ezc model -n mymodel -H -i examples.csv -t 0.84
+ezc model train --name=mymodel --header --input=examples.csv
 ```
 
 To list all the available models you can use `ezc model ls`
@@ -160,7 +160,21 @@ To list all the available models you can use `ezc model ls`
 #### Step 2: classify your data using the created model:
 
 ```
-ezc classify -n mymodel -H -i data.csv -o result.csv
+ezc classify --name=mymodel --header --input=input-data.csv --output=result.csv --threshold=0.84
 ```
 
-The result.csv file will contain your classified data
+The result.csv file will contain your classified data.
+Note that data with a confidence less than 0.84 are assigned to the "OTHER" category
+
+{{% alert title="Also with streamed data" color="info" %}}
+EZClassifier is also able work as a buffered stream data processor :
+```
+cat input-data.csv | ezc classify --name=mymodel > result.csv
+```
+{{% /alert %}}
+
+Remove your model with `ezc model train --name=mymodel`. 
+
+{{% alert title="Warning" color="warning" %}}
+Models that are not used for more than 3 month are automatically deleted.
+{{% /alert %}}
