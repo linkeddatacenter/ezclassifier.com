@@ -8,15 +8,25 @@ Data classification is the process of organizing and categorizing data based on 
 It helps make data more structured, accessible, and understandable. 
 
 ## Let's see an example
-Suppose you need to categorize a set of texts that contain mixed references to cats, actors, dogs, and other things you don't matter.
+Suppose you need to categorize a set of texts that contain mixed references to cats, actors, dogs, and other things that don't matter.
 
-You will need a CSV file containing a list of few examples. In this file, each example corresponds to a row that provides two fields: 
+You will need a CSV file containing a few examples. In this file, each example corresponds to a row that provides two fields: 
 - **prototype**: a text that exemplifies a typical element in the category specified in the second field
 - **class**: a short text that represent a category name
 
-You can add as many examples and categories as you like, as long as there is at least one example for each category. EZClassifier works with any language, even when used simultaneously in the same text or the same data file and/or examples.
+These examples are used by EZClassifier to create a personalized model. You can add to the model as many prototypes and categories as you like, as long as there is at least one example for each category. EZClassifier works with any language, even when used simultaneously in the same text or the same data file and/or examples.
 
-Here are some examples you can provide:
+Once you created your model, you use it to classify your data. 
+EZClassifier will create a table adding two additional fields to your data:
+- **class**: that is the predicted category for the described row
+- **similarity**: a number from 0 to 1 that represents the confidence of EZClassifier about its classification (1=maxumum confidence , 0=no confidence).
+  
+
+
+{{< tabpane text=true >}}
+{{% tab header="model examples"  %}}
+
+Here are some examples you can use to train your model:
 
 | prototype                                                                                                                                             | class |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
@@ -33,8 +43,10 @@ Here are some examples you can provide:
 | Viola Davis: Viola Davis is a talented actress known for her powerful performances                                                                    | actor |
 
 
+{{% /tab %}}
+{{% tab header="input data"  %}}
 
-Than you can provide a set of data to classify according the provided example. For instance:
+Here are the data you want to classify:
 
 | data                                                                                                                                    |
 |-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -62,12 +74,10 @@ Than you can provide a set of data to classify according the provided example. F
 | Hoe: A hoe has a flat, blade-like head and a long handle, used for weeding, cultivating, and breaking up soil.                          |
 | Pruning Shears: Prunin                                                                                                                  | 
 
+{{% /tab %}}
+{{% tab header="classified data"  %}}
 
-On success EZClassifier will create a table with two additional fields:
-- **class**: that is the predicted category for the described row
-- **similarity**: a number from 0 to 1 that represents the confidence of EZClassifier about its classification (1=maxumum confidence , 0=no confidence)
-
-For example:
+Here are some results. Note that elements with a confidence less than 0.84 (configurable) are assigned to the "OTHER" category:
 
 | data | class | similarity |
 | --- | --- | --- |
@@ -95,8 +105,8 @@ For example:
 | Hoe: A hoe has a flat, blade-like head and a long handle, used for weeding, cultivating, and breaking up soil. | OTHER | 0.760036 |
 | Pruning Shears: Prunin | OTHER | 0.781802 |
 
-Nothe that elements with a confidence less than 0.84 (configurable) will be assigned to the "OTHER" category
-
+{{% /tab %}}
+{{< /tabpane >}}
 
 ## Try it out!
 
@@ -125,6 +135,7 @@ doskey ezc=java -jar "%USERPROFILE%\Downloads\ezc.jar" $*
 Test that the system is working:
 ```
 java --version
+# be sure it reports a java version > 17 
 ezc --version
 ```
 
