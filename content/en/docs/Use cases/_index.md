@@ -1,6 +1,7 @@
 ---
 title: Use cases
 menu: {main: {weight: 20}}
+description: See how EZClassifier helps you
 weight: 20
 ---
 

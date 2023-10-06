@@ -1,6 +1,6 @@
 ---
 title: Training file
-menu: {main: {weight: 30}}
+description: The training file format
 weight: 4
 ---
 
@@ -10,12 +10,12 @@ Each example can contain a set of fields, some mandatory some optional. The inde
 
 If the index of the fileld doe not exists in the record or the field format is not a valid value, the default value is used:
 
-| field name | field description | required | type | default value | default |
+| field name | field description | required | type | default value | field index |
 | ---------- | ----------------- | -------- | ---- | ------------- | ------- |
 | prototype  | a text that exemplifies a typical element in the category specified in the second field | YES | String | N.A. | --prototype-index=0 |
 | class | a short text that represent a category name | YES | String | N.A. | --class-index=1 | 
-| weight | a multiplicative factor for predicted similarity  | NO | positive real number | 1.0 | --weight-index=2 | 
-| bias | a additive value factor for predicted similarity  | NO | real number | 0.0 | --bias-index=2 | 
+| weight | a multiplicative factor for predicted similarity  | NO | positive real number | 1.0 | --weight-index | 
+| bias | a additive value factor for predicted similarity  | NO | real number | 0.0 | --bias-index | 
 
 If an  header raw is present, please do not forget to use the `--header` option in `model train` command
 
