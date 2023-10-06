@@ -10,7 +10,7 @@ It helps make data more structured, accessible, and understandable.
 ## Let's see an example
 Suppose you need to categorize a set of texts that contain mixed references to cats, actors, dogs, and other things that don't matter.
 
-You will need a CSV file containing a few examples. In this file, each example corresponds to a row that provides two fields: 
+You will need a CSV file containing a few examples. In this file, each example corresponds to a row that provides at least two fields: 
 - **prototype**: a text that exemplifies a typical element in the category specified in the second field
 - **class**: a short text that represent a category name
 

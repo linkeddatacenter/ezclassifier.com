@@ -1,7 +1,7 @@
 ---
 title: Command reference
 description: All EZClassifier command syntax and options
-weight: 9
+weight: 3
 ---
 
 All the services offered by EZClassifier can be accessed using the command through the `ezc` command. 
@@ -72,7 +72,7 @@ You can enhance an already trained model  by adding new examples through multipl
   Will ignore the first line of the CSV file.
 
 - `-i, --input=<inputFilename>`  
-  The file containing the training data, by default “-” that means std in (e.g. -i - ). The stream is supposed to be in CSV format and MUST contain two fields (“prototype” and “class”) plus an optional field “weight” ranging from 0 to 1 (1 by default).
+  The file containing the training data, by default “-” that means std in (e.g. -i - ). The stream is supposed to be in CSV format and MUST contain two fields (“prototype” and “class”) and some [additional fields]({{< ref "training file" >}}).
 
 - `-k, --api-key=<apiKey>`  
   A registered API key. If not present, the value from the env variable TC_API_KEY is used.
