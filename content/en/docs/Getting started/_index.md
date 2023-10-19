@@ -165,7 +165,7 @@ cat input-data.csv | ezc classify --name=mymodel > result.csv
 ```
 {{% /alert %}}
 
-Remove your model with `ezc model train --name=mymodel`. 
+Remove your model with `ezc model rm --name=mymodel`. 
 
 {{% alert title="Warning" color="warning" %}}
 Models that are not used for more than 3 month are automatically deleted.
