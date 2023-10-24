@@ -126,36 +126,37 @@ doskey ezc=java -jar "%USERPROFILE%\Downloads\ezc.jar" $*
 
 Test that the system is working:
 ```
-java --version
 # be sure it reports a java version > 17 
 ezc --version
 ```
 
 
-### Run the example in two simple steps
 
-{{% alert title="sampe data" color="info" %}}
+#### Step 1: download example files
 Here you can download some sample data:
-- [examples file](/tutorial1-data/examples.csv): some examples about cat, dog, and actor descriptions
+- [model source file](/tutorial1-data/examples.csv): some examples about cat, dog, and actor descriptions
 - [data to be classified](/tutorial1-data/input-data.csv): some strings to classify
-{{% /alert %}}
+ 
 
-#### Step 1: create a model
+#### Step 2: create a model
 Create a new model from your examples:
 
 ```
 ezc model train --name=mymodel --header --input=examples.csv
 ```
 
+Be sure to use as --input argument the path (relative or absolute) of the downloaded model source file
+
 To list all the available models you can use `ezc model ls`
 
-#### Step 2: classify your data using the created model:
+
+#### Step 3: classify your data using the created model:
 
 ```
 ezc classify --name=mymodel --header --input=input-data.csv --output=result.csv --threshold=0.84
 ```
 
-The result.csv file will contain your classified data.
+The result.csv file in your current directory will contain your classified data.
 Note that data with a confidence less than 0.84 are assigned to the "OTHER" category
 
 {{% alert title="Also with streamed data" color="info" %}}

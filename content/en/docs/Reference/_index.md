@@ -169,6 +169,9 @@ Perform classification
 - **`-n, --name=<name>`**  
   Model name.
 
+- **`--no-buffer`**
+  Execute the program in interactive mode. Will ignore --input, --output and --header options.
+
 - **`-o, --output=<outFilename>`**  
   The output filename; “-” means stdout (e.g. -o - ).
 
