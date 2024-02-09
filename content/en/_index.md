@@ -7,7 +7,7 @@ title: EZClassifier
 <p class="lead mt-5">a cutting-edge text classification solution powered by advanced AI algorithms
 </p>
 {{< blocks/link-down color="info" >}}
-<a class="btn btn-lg btn-secondary me-3 mb-4" href="docs">
+<a class="btn btn-lg btn-secondary me-3 mb-4" href="docs/getting-started">
   Start now <i class="fab fa-github ms-2 "></i>
 </a>
 {{< /blocks/cover >}}
