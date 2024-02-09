@@ -8,7 +8,7 @@ title: EZClassifier
 </p>
 {{< blocks/link-down color="info" >}}
 <a class="btn btn-lg btn-secondary me-3 mb-4" href="docs/getting-started">
-  Start now <i class="fab fa-github ms-2 "></i>
+  Start now <i class="fab fa-rocket ms-2"></i>
 </a>
 {{< /blocks/cover >}}
 
